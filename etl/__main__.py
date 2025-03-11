@@ -1,5 +1,5 @@
 # __main__.py
-from .glue_job import main
+import glue_job
 
 if __name__ == "__main__":
-    main()
+    glue_job.main()
