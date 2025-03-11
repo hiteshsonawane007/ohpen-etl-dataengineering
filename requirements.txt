@@ -1,5 +1,5 @@
 awscli==1.38.10
-boto3==1.26.0
 pyspark==3.4.4
 pytest==7.2.0
 pytest-spark==0.3.0
+s3transfer==0.11.1
