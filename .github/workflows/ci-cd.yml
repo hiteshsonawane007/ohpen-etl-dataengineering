@@ -28,6 +28,7 @@ jobs:
       - name: Run tests
         run: |
           source venv/bin/activate
+          export PYTHONPATH=$(pwd)
           pytest --maxfail=1 --disable-warnings -q
 
   terraform:
