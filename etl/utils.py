@@ -2,7 +2,8 @@
 
 import logging
 from pyspark.sql.functions import col
-from . import config  # Relative import of config module
+#from . import config  # Relative import of config module
+import config
 
 logger = logging.getLogger(__name__)
 
