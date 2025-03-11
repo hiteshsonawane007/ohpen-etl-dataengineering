@@ -59,9 +59,12 @@ def process_data(input_s3_folder, output_s3_folder, sns_topic_arn):
     logger.info("Data processing complete. Output written to %s", output_s3_folder)
     spark.stop()
 
-if __name__ == "__main__":
+def main():
     args = getResolvedOptions(sys.argv, ['JOB_NAME', 'input_s3_folder', 'output_s3_folder', 'sns_topic_arn'])
     input_s3_folder = args['input_s3_folder']
     output_s3_folder = args['output_s3_folder']
     sns_topic_arn = args['sns_topic_arn']
     process_data(input_s3_folder, output_s3_folder, sns_topic_arn)
+    
+if __name__ == "__main__":
+    main()
