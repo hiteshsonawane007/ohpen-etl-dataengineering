@@ -32,6 +32,8 @@ def validate_data(df):
         invalid_records = initial_count - final_count
         if invalid_records > 0:
             logger.warning("Validation removed %s records due to missing/invalid values.", invalid_records)
+        if final_count == 0:
+            raise ValueError("No valid data found")
         
         return df_valid
     except Exception as e:

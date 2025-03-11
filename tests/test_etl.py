@@ -56,4 +56,6 @@ def test_validate_data_no_valid(spark):
     df = spark.createDataFrame(data, columns)
     df = df.withColumn("TransactionTimestamp", to_timestamp("TransactionTimestamp"))
     df_valid = validate_data(df)
-    assert df_valid.count() == 0
+    # Use pytest.raises to assert that validate_data raises a ValueError.
+    with pytest.raises(ValueError, match="No valid data found"):
+        validate_data(df)
