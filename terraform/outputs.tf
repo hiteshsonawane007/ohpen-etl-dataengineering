@@ -1,14 +1,19 @@
-output "glue_job_name" {
-  description = "The name of the AWS Glue job"
-  value       = aws_glue_job.etl_job.name
+output "glue_job_arn" {
+  description = "ARN of the Glue job"
+  value       = module.glue.etl_job_arn
 }
 
-output "glue_role_arn" {
-  description = "The ARN for the IAM role attached to the Glue job"
-  value       = aws_iam_role.glue_role.arn
+output "raw_folder_uri" {
+  description = "S3 URI for raw data folder"
+  value       = "s3://${module.raw.bucket_name}/transactions/raw/"
 }
 
-output "glue_etl_script_location" {
-  description = "The S3 URI of the uploaded Glue ETL script"
-  value       = "s3://${aws_s3_bucket.input_bucket.bucket}/${aws_s3_bucket_object.glue_etl_script.key}"
+output "processed_folder_uri" {
+  description = "S3 URI for processed data folder"
+  value       = "s3://${module.processed.bucket_name}/transactions/processed/"
+}
+
+output "sns_topic_arn" {
+  description = "SNS Topic ARN for alerts"
+  value       = module.sns.topic_arn
 }

@@ -17,3 +17,9 @@ variable "role_name" {
   type        = string
   default     = "glue_job_role"
 }
+
+variable "sns_topic_email" {
+  description = "Email address for SNS alerts"
+  type        = string
+  default     = "hitesh.sonawane8329@gmail.com"   # Change to the desired email
+}

@@ -43,6 +43,11 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+        # Package the contents of the etl folder into a ZIP file.
+      - name: Package ETL Scripts
+        run: |
+          zip -r etl_package.zip etl/*
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
@@ -52,10 +57,6 @@ jobs:
       - name: Terraform Init
         working-directory: terraform
         run: terraform init
-
-      - name: Force Unlock Terraform State
-        working-directory: terraform
-        run: terraform force-unlock 25b57e3b-7871-5a26-c9e4-87459c20dcb1 || echo "No lock or already unlocked"   
 
       - name: Terraform Plan
         working-directory: terraform
