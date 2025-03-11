@@ -13,3 +13,16 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+# New variables for ZIP package upload
+variable "upload_zip" {
+  description = "Whether to upload a zip file into the bucket"
+  type        = bool
+  default     = false
+}
+
+variable "zip_source" {
+  description = "Local file path of the zip file to upload"
+  type        = string
+  default     = ""
+}

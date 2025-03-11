@@ -6,6 +6,8 @@ module "raw" {
     Name        = "ETL Raw Data"
     Environment = "production"
   }
+  upload_zip  = true
+  zip_source  = "../etl_package.zip"
 }
 
 module "processed" {
@@ -28,7 +30,7 @@ module "glue" {
   source              = "./modules/glue"
   job_name            = var.glue_job_name
   role_name           = var.role_name
-  etl_package_s3_uri  = "s3://${module.raw.bucket_name}/etl/etl_package.zip"  # ZIP file to be uploaded by CI/CD.
+  etl_package_s3_uri  = module.raw.etl_package_s3_uri
   max_capacity        = 2
   input_folder_uri    = "s3://${module.raw.bucket_name}/transactions/raw/"
   output_folder_uri   = "s3://${module.processed.bucket_name}/transactions/processed/"
