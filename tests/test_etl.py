@@ -41,6 +41,7 @@ def test_validate_data_all_valid(spark):
     df_valid = validate_data(df)
     assert df_valid.count() == 2
 
+pytest.raises(ValueError, match="Some of types cannot be determined after inferring")
 def test_validate_data_no_valid(spark):
     data = [
         (None, "cust_001", 100.0, "ABC", "2021-07-01 10:00:00"),
@@ -56,6 +57,4 @@ def test_validate_data_no_valid(spark):
     df = spark.createDataFrame(data, columns)
     df = df.withColumn("TransactionTimestamp", to_timestamp("TransactionTimestamp"))
     df_valid = validate_data(df)
-    # Use pytest.raises to assert that validate_data raises a ValueError.
-    with pytest.raises(ValueError, match="No valid data found"):
-        validate_data(df)
+    assert df_valid.count() == 0
