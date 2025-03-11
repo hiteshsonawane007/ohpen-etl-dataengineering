@@ -3,7 +3,7 @@
 import pytest
 from pyspark.sql.functions import to_timestamp
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType
-from etl import validate_data
+from etl.utils import validate_data
 
 
 def test_validate_data(spark):
