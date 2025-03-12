@@ -45,6 +45,24 @@ resource "aws_iam_policy" "glue_crawler_policy" {
           "logs:PutLogEvents"
         ],
         "Resource": "arn:aws:logs:*:*:*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:ListBucket"
+        ],
+        "Resource": [
+          "arn:aws:s3:::ohpen-etl-processed-financial-data"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject"
+        ],
+        "Resource": [
+          "arn:aws:s3:::ohpen-etl-processed-financial-data/transactions/processed/*"
+        ]
       }
     ]
   })
