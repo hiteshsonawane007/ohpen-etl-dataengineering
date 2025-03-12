@@ -49,5 +49,5 @@ module "glue_crawler" {
   crawler_name = "transactions-crawler"
   database_name = "etl_database"
   s3_target     = "s3://${module.processed.bucket_name}/transactions/processed/"
-  role_arn      = module.glue.glue_role_arn
+  role_arn      = var.crawler_role_arn
 }
