@@ -47,9 +47,7 @@ jobs:
         # Package the contents of the etl folder into a ZIP file.
       - name: Package ETL Scripts
         run: |
-          cd etl
-          zip -r ../etl_package.zip .
-          cd ..
+          zip -r etl_package.zip __main__.py etl/
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
