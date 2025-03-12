@@ -28,8 +28,9 @@ resource "aws_iam_policy" "glue_crawler_policy" {
           "glue:GetDatabases",
           "glue:GetTable",
           "glue:GetTables",
-          "glue:CreateTable",        // if needed
-          "glue:UpdateTable"         // if needed
+          "glue:CreateTable",
+          "glue:UpdateTable",
+          "glue:BatchGetPartition"
         ],
         "Resource": [
           "arn:aws:glue:${var.region}:${data.aws_caller_identity.current.account_id}:catalog",
