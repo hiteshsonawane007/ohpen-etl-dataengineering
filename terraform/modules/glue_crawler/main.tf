@@ -36,6 +36,15 @@ resource "aws_iam_policy" "glue_crawler_policy" {
           "arn:aws:glue:${var.region}:${data.aws_caller_identity.current.account_id}:database/etl_database",
           "arn:aws:glue:${var.region}:${data.aws_caller_identity.current.account_id}:table/etl_database/*"
         ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "arn:aws:logs:*:*:*"
       }
     ]
   })
