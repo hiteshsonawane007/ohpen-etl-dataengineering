@@ -6,6 +6,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, year, month, to_timestamp
 from etl import utils
 from etl import config
+from etl.utils import validate_data
 from awsglue.utils import getResolvedOptions
 import boto3
 
