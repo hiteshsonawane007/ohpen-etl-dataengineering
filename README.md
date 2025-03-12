@@ -1,4 +1,4 @@
-# My ETL Project
+# AWS ETL Project
 
 This repository contains an end-to-end ETL pipeline solution using AWS Glue, S3, SNS, and AWS Glue Crawlers integrated via Terraform. The pipeline ingests raw CSV files from S3, processes and validates the data using a Glue job written with PySpark, writes partitioned Parquet files to S3, catalogs the processed data via a Glue Crawler, and sends email notifications on job completion. The project is managed using Infrastructure as Code (Terraform modules) and automated with GitHub Actions.
 
@@ -64,7 +64,45 @@ This project implements a robust ETL process that:
 
 ## Project Directory Structure
 
-project-name/ ├── etl/ │ ├── init.py # Marks etl as a package (can be empty) │ ├── glue_job.py # Main AWS Glue ETL logic (PySpark) │ ├── config.py # Application settings and configurations │ ├── utils.py # Helper functions (data validation, etc.) │ └── main.py # Entry point for AWS Glue (calls glue_job.main()) ├── tests/ # Contains unit tests and test fixtures │ └── ... ├── terraform/ # Terraform configuration for IAC │ ├── backend.tf # Remote state config (S3 and DynamoDB) │ ├── modules.tf # Instantiates modules (S3, SNS, Glue, Glue Crawler) │ ├── outputs.tf # Root-level outputs │ ├── variables.tf # Root-level variables │ ├── versions.tf # Terraform version and provider requirements │ └── modules/ │ ├── s3/ # S3 module (creates buckets and dummy folder objects) │ │ ├── main.tf │ │ ├── variables.tf │ │ └── outputs.tf │ ├── sns/ # SNS module (creates topic and subscriptions) │ │ ├── main.tf │ │ ├── variables.tf │ │ └── outputs.tf │ ├── glue/ # Glue Job module (creates Glue job and IAM role) │ │ ├── main.tf │ │ ├── variables.tf │ │ └── outputs.tf │ └── glue_crawler/ # Glue Crawler module (creates catalog database, crawler, and IAM role/policy) │ ├── main.tf │ ├── variables.tf │ └── outputs.tf ├── .github/ │ └── workflows/ │ └── ci-cd.yml # GitHub Actions workflow for testing and deployment ├── requirements.txt # Python dependencies (including pyspark, boto3, pytest, etc.) ├── pytest.ini # Pytest config (ensures proper PYTHONPATH) └── README.md
+project-name/
+├── etl/
+│   ├── __init__.py                # Marks etl as a package (can be empty)
+│   ├── glue_job.py                # Main AWS Glue ETL logic (PySpark)
+│   ├── config.py                  # Application settings and configurations
+│   ├── utils.py                   # Helper functions (data validation, etc.)
+│   └── main.py                    # Entry point for AWS Glue (calls glue_job.main())
+├── tests/                         # Contains unit tests and test fixtures
+│   └── ...                        
+├── terraform/                     # Terraform configuration for IAC
+│   ├── backend.tf                 # Remote state config (S3 and DynamoDB)
+│   ├── modules.tf                 # Instantiates modules (S3, SNS, Glue, Glue Crawler)
+│   ├── outputs.tf                 # Root-level outputs
+│   ├── variables.tf               # Root-level variables
+│   ├── versions.tf                # Terraform version and provider requirements
+│   └── modules/
+│       ├── s3/                    # S3 module (creates buckets and dummy folder objects)
+│       │   ├── main.tf
+│       │   ├── variables.tf
+│       │   └── outputs.tf
+│       ├── sns/                   # SNS module (creates topic and subscriptions)
+│       │   ├── main.tf
+│       │   ├── variables.tf
+│       │   └── outputs.tf
+│       ├── glue/                  # Glue Job module (creates Glue job and IAM role)
+│       │   ├── main.tf
+│       │   ├── variables.tf
+│       │   └── outputs.tf
+│       └── glue_crawler/          # Glue Crawler module (creates catalog database, crawler, and IAM role/policy)
+│           ├── main.tf
+│           ├── variables.tf
+│           └── outputs.tf
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml              # GitHub Actions workflow for testing and deployment
+├── requirements.txt               # Python dependencies (e.g., pyspark, boto3, pytest, etc.)
+├── pytest.ini                     # Pytest configuration (ensures proper PYTHONPATH)
+└── README.md
+
 
 
 ---
