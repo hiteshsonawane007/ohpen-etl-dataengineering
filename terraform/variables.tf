@@ -23,3 +23,10 @@ variable "sns_topic_email" {
   type        = string
   default     = "hitesh.sonawane8329@gmail.com"   # Change to the desired email
 }
+
+# This variable is used by the glue crawler module for its role policy
+variable "crawler_role_arn" {
+  description = "IAM Role ARN for the Glue crawler (if providing externally)"
+  type        = string
+  default     = ""
+}
