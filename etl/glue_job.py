@@ -50,7 +50,7 @@ def process_data(input_s3_folder, output_s3_folder, sns_topic_arn):
                              .withColumn("month", month(col("TransactionTimestamp")))
     
     # Write output as Parquet, partitioned by year and month
-    df_partitioned.write.mode("overwrite") \
+    df_partitioned.write.mode("append") \
         .partitionBy("year", "month") \
         .parquet(output_s3_folder)
     total_records = df_partitioned.count()

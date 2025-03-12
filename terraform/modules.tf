@@ -43,3 +43,11 @@ module "glue" {
     "arn:aws:s3:::${module.processed.bucket_name}/*"
   ]
 }
+
+module "glue_crawler" {
+  source       = "./modules/glue_crawler"
+  crawler_name = "transactions-crawler"
+  database_name = "etl_database"
+  s3_target     = "s3://${module.processed.bucket_name}/transactions/processed/"
+  role_arn      = module.glue.glue_role_arn
+}
