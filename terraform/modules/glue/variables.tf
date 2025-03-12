@@ -44,7 +44,3 @@ variable "s3_resources" {
   description = "A list of S3 ARNs which the Glue job is allowed to access"
   type        = list(string)
 }
-variable "crawler_role_arn" {
-  description = "IAM Role ARN for the Glue crawler"
-  type        = string
-}
