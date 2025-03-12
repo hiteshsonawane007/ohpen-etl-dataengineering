@@ -42,7 +42,7 @@ resource "aws_iam_policy" "glue_crawler_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "glue_crawler_attach" {
-  role       = aws_iam_role.crawler_role.arn
+  role       = aws_iam_role.crawler_role.name
   policy_arn = aws_iam_policy.glue_crawler_policy.arn
 }
 
