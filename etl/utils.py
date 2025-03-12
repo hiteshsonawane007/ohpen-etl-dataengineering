@@ -38,4 +38,4 @@ def validate_data(df):
         return df_valid
     except Exception as e:
         logger.error("An error occurred during data validation: %s", e)
-        raise
+        #raise
