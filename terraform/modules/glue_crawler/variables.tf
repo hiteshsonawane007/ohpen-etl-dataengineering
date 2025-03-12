@@ -13,12 +13,7 @@ variable "s3_target" {
   type        = string
 }
 
-variable "role_arn" {
-  description = "IAM role ARN for the Glue crawler"
-  type        = string
-}
-
-variable "crawler_role_arn" {
-  description = "IAM role ARN to be used by the Glue crawler"
+variable "region" {
+  description = "AWS region"
   type        = string
 }
