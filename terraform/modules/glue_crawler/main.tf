@@ -90,6 +90,10 @@ resource "aws_glue_crawler" "this" {
     "Version": 1.0,
     "CrawlerOutput": {
       "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" }
+    },
+    "SchemaChangePolicy": {
+      "UpdateBehavior": "UPDATE_IN_DATABASE",  // Automatically update the table schema with new columns
+      "DeleteBehavior": "LOG"                   // Log removals rather than deleting columns
     }
   })
 }

@@ -61,9 +61,11 @@ jobs:
 
       - name: Terraform Plan
         working-directory: terraform
-        run: terraform plan -out=tfplan
+        #run: terraform plan -out=tfplan
+        run: terraform plan -destroy -out=destroy-tfplan
 
       # Uncomment the following apply step once you are ready for auto deployment.
       - name: Terraform Apply
         working-directory: terraform
-        run: terraform apply -auto-approve tfplan
+        #run: terraform apply -auto-approve tfplan
+        run: terraform destroy -auto-approve destroy-tfplan
